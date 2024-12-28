@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 821px; /* Largeur maximale augmentée pour une grille plus grande */
+    margin: auto;
+  }
+  
+  #puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(8, 97px); /* 8 colonnes, 253px chacune */
+    grid-gap: 5px;
+    margin: 10px auto;
+    background-color: #ccc;
+    padding: 5px;
+  }
+  
+  .piece {
+    width: 97px; /* Largeur de chaque pièce */
+    height: 94px; /* Hauteur de chaque pièce */
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #message {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

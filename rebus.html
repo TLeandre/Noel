@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Rebus (sans connotation sexuelle) </h1>
+    <h3>Défi numéro 1 sur 100</h3>
+    <p>J'ai beaucoup aimé ton calendrier de l'avant, je ne pouvais pas juste te donner ton cadeau sans rien faire. Alors je me suis inspiré de toi pour réaliser les 100 défis que tu dois résoudre pour avoir ton cadeau. Bonne chance !</p>
+    <div id="rebus-container">
+      <!-- Remplacez l'image par celle de votre rébus -->
+      <img src="images/rebus.jpg" alt="Rébus" style="max-width: 100%; height: auto;">
+    </div>
+    <input type="text" id="rebus-input" placeholder="Votre réponse ici" />
+    <button id="submit-rebus">Valider</button>
+    <p id="feedback" style="color: red; margin-top: 10px;"></p>
+  </div>
+
+  <script>
+    const correctAnswer = "Une journee de reves et de magie"; // Remplacez par la solution correcte du rébus
+    const input = document.getElementById('rebus-input');
+    const feedback = document.getElementById('feedback');
+    const button = document.getElementById('submit-rebus');
+
+    button.addEventListener('click', () => {
+      if (input.value.toLowerCase() === correctAnswer.toLowerCase()) {
+        // Bonne réponse, redirection vers le puzzle
+        window.location.href = "puzzle.html"; // Remplacez par le chemin de votre page du puzzle
+      } else {
+        // Mauvaise réponse, affiche un message d'erreur
+        feedback.textContent = "Mauvaise réponse, essayez encore !";
+      }
+    });
+  </script>
+</body>
+</html>

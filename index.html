@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      /* Ajout du fond d'écran */
+      background-image: url('./images/wallpaper.jpg');
+      background-size: cover; /* Permet de couvrir toute la page */
+      background-position: center; /* Centre l'image */
+    }
+
+    #button-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gift {
+      position: absolute;
+      width: 100px; /* Taille de l'image de cadeau */
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .reindeer {
+      position: absolute;
+      width: 80px; /* Taille de l'image du renne */
+      pointer-events: none; /* Le renne n'interfère pas avec les clics */
+    }
+  </style>
+</head>
+<body>
+  <div id="button-container">
+    <img id="gift" class="gift" src="./images/cadeau.png" alt="Cadeau">
+    <img id="reindeer" class="reindeer" src="./images/renne.png" alt="Renne">
+  </div>
+
+  <script>
+    const gift = document.getElementById('gift');
+    const reindeer = document.getElementById('reindeer');
+    const container = document.getElementById('button-container');
+    let buttonCanMove = true; // Contrôle si le cadeau peut bouger
+
+    // Déplace le cadeau (et le renne) à une nouvelle position
+    function moveGift() {
+      const containerRect = container.getBoundingClientRect();
+      const giftWidth = gift.offsetWidth;
+      const giftHeight = gift.offsetHeight;
+
+      const newLeft = Math.random() * (containerRect.width - giftWidth);
+      const newTop = Math.random() * (containerRect.height - giftHeight);
+
+      gift.style.left = `${newLeft}px`;
+      gift.style.top = `${newTop}px`;
+
+      // Place le renne légèrement à gauche et en haut du cadeau
+      reindeer.style.left = `${newLeft - 50}px`;
+      reindeer.style.top = `${newTop - 20}px`;
+    }
+
+    // Gestion du déplacement du cadeau
+    gift.addEventListener('mouseenter', () => {
+      if (buttonCanMove) {
+        moveGift();
+      }
+    });
+
+    // Arrêter le mouvement en maintenant 'C'
+    document.addEventListener('keydown', (event) => {
+      if (event.key.toLowerCase() === 'c') {
+        buttonCanMove = false;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key.toLowerCase() === 'c') {
+        buttonCanMove = true;
+      }
+    });
+
+    // Rediriger vers le rébus une fois le cadeau cliqué
+    gift.addEventListener('click', () => {
+      window.location.href = 'rebus.html'; // Remplacez par le chemin vers la page du rébus
+    });
+
+    // Position initiale du cadeau et du renne
+    moveGift();
+  </script>
+</body>
+</html>
